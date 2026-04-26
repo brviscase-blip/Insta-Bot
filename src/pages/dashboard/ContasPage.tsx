@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button-ui";
-import { Badge } from "@/components/ui/badge-ui";
+import { Button } from "../../components/ui/button.tsx";
+import { Badge } from "../../components/ui/badge.tsx";
 import { Plus, Instagram, Image as ImageIcon, MessageSquare, MoreHorizontal } from "lucide-react";
 
 export default function ContasPage() {

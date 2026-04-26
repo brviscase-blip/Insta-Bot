@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Calendar } from "@/components/ui/calendar-ui";
-import { Button } from "@/components/ui/button-ui";
+import { Calendar } from "../../components/ui/calendar.tsx";
+import { Button } from "../../components/ui/button.tsx";
 import { Plus } from "lucide-react";
 
 export default function CalendarioPage() {

@@ -1,5 +1,5 @@
 import { Calendar, Users, Bot, TrendingUp, BarChart2 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card-ui";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card.tsx";
 
 export default function DashboardPage() {
   return (

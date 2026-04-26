@@ -1,6 +1,6 @@
 import { Bell, Menu, Search } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar-component";
-import { Button } from "@/components/ui/button-ui";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar.tsx";
+import { Button } from "./ui/button.tsx";
 
 export function Topbar() {
   return (

@@ -1,5 +1,5 @@
 import { Plus, Filter, Image as ImageIcon, Video, FolderArchive } from "lucide-react";
-import { Button } from "@/components/ui/button-ui";
+import { Button } from "../../components/ui/button.tsx";
 
 export default function BibliotecaPage() {
   return (
