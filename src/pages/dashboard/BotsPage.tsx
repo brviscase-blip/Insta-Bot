@@ -1,5 +1,5 @@
 import { Plus, MessageSquareText, MoreHorizontal } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button-ui";
 
 export default function BotsPage() {
   const bots = [
