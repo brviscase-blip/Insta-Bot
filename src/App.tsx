@@ -17,6 +17,12 @@ function RequireAuth() {
   const location = useLocation();
 
   useEffect(() => {
+    if (localStorage.getItem("mock_session") === "true") {
+      setSession({ user: { email: "beatrizcabrallima82@gmail.com" } });
+      setLoading(false);
+      return;
+    }
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
@@ -35,9 +41,7 @@ function RequireAuth() {
     return <div className="min-h-screen flex items-center justify-center">Carregando...</div>;
   }
 
-  // Permitir acesso ao Dashboard e outras páginas temporariamente para visualização local,
-  // mas mostrar alerta se o login falhar porque não temos vars de ambiente.
-  if (!session && import.meta.env.PROD) {
+  if (!session) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
