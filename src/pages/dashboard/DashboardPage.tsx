@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Calendar, Users, Bot, TrendingUp, BarChart2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card.tsx";
-import { supabase } from "../../lib/supabase/client.ts";
+import { supabase, isSupabaseConfigured } from "../../lib/supabase/client.ts";
 
 interface Stats {
   scheduledPosts: number;
@@ -35,6 +35,11 @@ export default function DashboardPage() {
   }, []);
 
   async function fetchDashboardData() {
+    if (!isSupabaseConfigured) {
+      setLoading(false);
+      return;
+    }
+
     try {
       // 1. Contar posts agendados
       const { count: scheduledCount } = await supabase

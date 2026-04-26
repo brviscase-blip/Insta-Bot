@@ -1,6 +1,6 @@
 import { BarChart, Activity, Users, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase/client.ts";
+import { supabase, isSupabaseConfigured } from "../../lib/supabase/client.ts";
 
 export default function AnalyticsPage() {
   const [stats, setStats] = useState([
@@ -9,10 +9,18 @@ export default function AnalyticsPage() {
     { title: "Novos Seguidores", value: "0", change: "0%", icon: Users, color: "text-emerald-500", trend: "up" },
     { title: "Taxa de Engajamento", value: "0%", change: "0%", icon: BarChart, color: "text-orange-500", trend: "up" },
   ]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // TODO: Fetch analytics data from Supabase once configured
-    console.log("Analytics data fetching needs to be implemented for real Supabase connection.");
+    async function fetchAnalytics() {
+      if (!isSupabaseConfigured) {
+        setLoading(false);
+        return;
+      }
+      // TODO: Fetch analytics implementation
+      setLoading(false);
+    }
+    fetchAnalytics();
   }, []);
 
   return (

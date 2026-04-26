@@ -1,15 +1,22 @@
 import { Plus, MessageSquareText, MoreHorizontal } from "lucide-react";
 import { Button } from "../../components/ui/button.tsx";
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase/client.ts";
+import { supabase, isSupabaseConfigured } from "../../lib/supabase/client.ts";
 
 export default function BotsPage() {
   const [bots, setBots] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // TODO: Fetch bots from Supabase
-    setLoading(false);
+    async function fetchBots() {
+      if (!isSupabaseConfigured) {
+        setLoading(false);
+        return;
+      }
+      // TODO: Fetch bots implementation
+      setLoading(false);
+    }
+    fetchBots();
   }, []);
 
   return (

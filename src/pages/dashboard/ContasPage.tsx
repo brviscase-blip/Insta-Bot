@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button } from "../../components/ui/button.tsx";
 import { Badge } from "../../components/ui/badge.tsx";
 import { Plus, Instagram, Trash2, RefreshCw, CheckCircle, XCircle, Users, Image as ImageIcon, MessageSquare, MoreHorizontal, X } from "lucide-react";
-import { supabase } from "../../lib/supabase/client.ts";
+import { supabase, isSupabaseConfigured } from "../../lib/supabase/client.ts";
 
 interface Account {
   id: string;
@@ -26,6 +26,10 @@ export default function ContasPage() {
   }, []);
 
   async function fetchAccounts() {
+    if (!isSupabaseConfigured) {
+      setLoading(false);
+      return;
+    }
     try {
       const { data, error } = await supabase
         .from('instagram_accounts')
