@@ -1,6 +1,20 @@
 import { BarChart, Activity, Users, Eye } from "lucide-react";
+import { useEffect, useState } from "react";
+import { supabase } from "../../lib/supabase/client.ts";
 
 export default function AnalyticsPage() {
+  const [stats, setStats] = useState([
+    { title: "Alcance Total", value: "0", change: "0%", icon: Activity, color: "text-indigo-600", trend: "up" },
+    { title: "Visitas ao Perfil", value: "0", change: "0%", icon: Eye, color: "text-blue-500", trend: "up" },
+    { title: "Novos Seguidores", value: "0", change: "0%", icon: Users, color: "text-emerald-500", trend: "up" },
+    { title: "Taxa de Engajamento", value: "0%", change: "0%", icon: BarChart, color: "text-orange-500", trend: "up" },
+  ]);
+
+  useEffect(() => {
+    // TODO: Fetch analytics data from Supabase once configured
+    console.log("Analytics data fetching needs to be implemented for real Supabase connection.");
+  }, []);
+
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       <header className="flex items-center justify-between">
@@ -18,12 +32,7 @@ export default function AnalyticsPage() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          { title: "Alcance Total", value: "145.2K", change: "+12.5%", icon: Activity, color: "text-indigo-600", trend: "up" },
-          { title: "Visitas ao Perfil", value: "12.4K", change: "+5.2%", icon: Eye, color: "text-blue-500", trend: "up" },
-          { title: "Novos Seguidores", value: "842", change: "-2.1%", icon: Users, color: "text-emerald-500", trend: "down" },
-          { title: "Taxa de Engajamento", value: "5.6%", change: "+0.8%", icon: BarChart, color: "text-orange-500", trend: "up" },
-        ].map((stat, i) => (
+        {stats.map((stat, i) => (
           <div key={i} className="bg-card p-6 rounded-2xl border border-border shadow-sm flex flex-col">
             <div className="flex justify-between items-start mb-4">
               <div className={`p-3 rounded-xl bg-secondary ${stat.color}`}>
@@ -43,13 +52,13 @@ export default function AnalyticsPage() {
         <div className="bg-card rounded-2xl border border-border shadow-sm p-6 flex flex-col">
           <h2 className="font-bold text-lg mb-6 text-foreground">Engajamento por Tipo de Post</h2>
           <div className="flex-1 border-2 border-dashed border-border/50 rounded-xl flex items-center justify-center text-muted-foreground/60">
-            Gráfico de Barras
+            <p>Conecte uma conta para ver os dados.</p>
           </div>
         </div>
         <div className="bg-card rounded-2xl border border-border shadow-sm p-6 flex flex-col">
           <h2 className="font-bold text-lg mb-6 text-foreground">Distribuição de Seguidores</h2>
           <div className="flex-1 border-2 border-dashed border-border/50 rounded-xl flex items-center justify-center text-muted-foreground/60">
-            Gráfico de Pizza
+            <p>Conecte uma conta para ver os dados.</p>
           </div>
         </div>
       </div>
